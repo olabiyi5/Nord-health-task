@@ -12,7 +12,7 @@ test.describe('Banking Application Tests', () => {
   });
 
 
-  // Test 2: Customer Login - Valid Login
+  // Test 2: Customer Login - Valid Loginnnn
   test('Customer Login - Valid', async ({ page }) => {
     await page.goto(baseURL);
 
