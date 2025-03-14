@@ -65,7 +65,7 @@ test.describe('Banking Application Tests', () => {
 
     // Verify withdrawal success message
     const withdrawMessage = await page.locator('.error').textContent();
-    expect(withdrawMessage).toContain('"Transaction Failed. You can not withdraw amount more than the balance."');
+    expect(withdrawMessage).toContain("Transaction Failed. You can not withdraw amount more than the balance.");
   });
 
   // Test 5: Bank Manager - Add Customer
@@ -104,6 +104,7 @@ test.describe('Banking Application Tests', () => {
     await page.locator('button[type="submit"]').click();
 
     // Verify account opening success alert
+    await expect(page.getByText("Account created successfully")).toBeVisible();
     await page.waitForEvent('dialog').then(dialog => {
       expect(dialog.message()).toContain('Account created successfully');
       dialog.dismiss();
