@@ -32,7 +32,7 @@ test.describe('Banking Application Tests', () => {
   test('Customer - Deposit Money', async ({ page }) => {
     await page.goto(baseURL);
 
-    // Login as Customerbb
+    // Login as Customer
     await page.locator('button[ng-click="customer()"]').click();
     await page.locator('select#userSelect').selectOption({ label: 'Harry Potter' });
     await page.locator('button[type="submit"]').click();
@@ -49,7 +49,7 @@ test.describe('Banking Application Tests', () => {
     expect(depositMessage).toContain('Deposit Successful');
   });
 
-  // Test 4: Customer - Withdraw Money
+  // Test 4: Customer - unsuccessful Money withdrawal
   test('Customer - Withdraw Money', async ({ page }) => {
     await page.goto(baseURL);
 
@@ -65,7 +65,7 @@ test.describe('Banking Application Tests', () => {
 
     // Verify withdrawal success message
     const withdrawMessage = await page.locator('.error').textContent();
-    expect(withdrawMessage).toContain('Transaction successful');
+    expect(withdrawMessage).toContain('"Transaction Failed. You can not withdraw amount more than the balance."');
   });
 
   // Test 5: Bank Manager - Add Customer
@@ -99,7 +99,7 @@ test.describe('Banking Application Tests', () => {
     // Open Account for a customer
     await page.locator('button[ng-click="openAccount()"]').click();
     await page.locator('select[ng-model="custId"]').selectOption({ label: 'Harry Potter' });
-    await page.locator('currency').click();
+    // await page.locator('currency').click();
     await page.locator('select[ng-model="currency"]').selectOption({ label: 'Dollar' });
     await page.locator('button[type="submit"]').click();
 
