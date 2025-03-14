@@ -92,7 +92,7 @@ test.describe('Banking Application Tests', () => {
 
     // Open Account for a customer
     await page.locator('button[ng-click="openAccount()"]').click();
-    await page.locator('select[ng-model="custId"]').selectOption({ label: 'seye ade' });
+    await page.locator('select[ng-model="custId"]').selectOption({ label: 'Harry Potter' });
     // await page.locator('currency').click();
     await page.locator('select[ng-model="currency"]').selectOption({ label: 'Dollar' });
     await page.locator('button[type="submit"]').click();
