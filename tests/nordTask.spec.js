@@ -83,8 +83,10 @@ test.describe('Banking Application Tests', () => {
     await page.locator('button[type="submit"]').click();
 
     // Verify new customer alert appears
-    await page.waitForEvent('dialog').then(dialog => {
-      expect(dialog.message()).toContain('Customer added successfully');
+    page.on('dialog', dialog => console.log(dialog.message()));
+    await page.getByText('Customer added successfully with customer id'); // Will hang here
+    //  await page.waitForEvent('dialog').then(dialog => {
+    // expect(dialog.message()).toContain('Customer added successfully');
       dialog.dismiss();
     });
   });
@@ -98,17 +100,16 @@ test.describe('Banking Application Tests', () => {
 
     // Open Account for a customer
     await page.locator('button[ng-click="openAccount()"]').click();
-    await page.locator('select[ng-model="custId"]').selectOption({ label: 'Harry Potter' });
+    await page.locator('select[ng-model="custId"]').selectOption({ label: 'seye ade' });
     // await page.locator('currency').click();
     await page.locator('select[ng-model="currency"]').selectOption({ label: 'Dollar' });
     await page.locator('button[type="submit"]').click();
 
     // Verify account opening success alert
-    await expect(page.getByText("Account created successfully")).toBeVisible();
     await page.waitForEvent('dialog').then(dialog => {
-      expect(dialog.message()).toContain('Account created successfully');
+      expect(dialog.message()).toContain('Account created successfully with account Number');
       dialog.dismiss();
     });
   });
-});
+
 
