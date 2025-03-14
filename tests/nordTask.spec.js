@@ -83,8 +83,6 @@ test.describe('Banking Application Tests', () => {
     await page.locator('button[type="submit"]').click();
 
   });
-  });
-
   // Test 6: Bank Manager - Open Account
   test('Bank Manager - Open Account for Customer', async ({ page }) => {
     await page.goto(baseURL);
@@ -101,5 +99,8 @@ test.describe('Banking Application Tests', () => {
 
 
   });
+  });
+
+
 
 
