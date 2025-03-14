@@ -32,7 +32,7 @@ test.describe('Banking Application Tests', () => {
   test('Customer - Deposit Money', async ({ page }) => {
     await page.goto(baseURL);
 
-    // Login as Customer
+    // Login as Customerbb
     await page.locator('button[ng-click="customer()"]').click();
     await page.locator('select#userSelect').selectOption({ label: 'Harry Potter' });
     await page.locator('button[type="submit"]').click();
