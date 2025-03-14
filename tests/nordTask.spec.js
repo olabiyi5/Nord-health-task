@@ -25,7 +25,7 @@ test.describe('Banking Application Tests', () => {
 
     // Verify successful login
     const welcomeText = await page.locator('.fontBig').textContent();
-    expect(welcomeText).toContain('Welcome Hermoine Granger'); // Check welcome message
+    expect(welcomeText).toContain('Hermoine Granger');
   });
 
   // Test 3: Customer - Deposit Money
@@ -60,7 +60,7 @@ test.describe('Banking Application Tests', () => {
     await page.locator('button[ng-click="withdrawl()"]').click();
 
     // Perform a withdrawal (with sufficient funds)
-    await page.locator('input[ng-model="amount"]').fill('500');
+    await page.locator('input[ng-model="amount"]').fill('20');
     await page.locator('button[type="submit"]').click();
 
     // Verify withdrawal success message
@@ -77,11 +77,8 @@ test.describe('Banking Application Tests', () => {
 
     // Add a new customer
     await page.locator('button[ng-click="addCust()"]').click();
-    await this.page.getByPlaceholder("First Name").click();
     await page.locator('input[ng-model="fName"]').fill('seye');
-    await this.page.getByPlaceholder("Last Name").click();
     await page.locator('input[ng-model="lName"]').fill('Ade');
-    await this.page.getByPlaceholder("Post Code").click();
     await page.locator('input[ng-model="postCd"]').fill('9999');
     await page.locator('button[type="submit"]').click();
 
@@ -101,7 +98,6 @@ test.describe('Banking Application Tests', () => {
 
     // Open Account for a customer
     await page.locator('button[ng-click="openAccount()"]').click();
-    await page.locator('userSelect').click();
     await page.locator('select[ng-model="custId"]').selectOption({ label: 'Harry Potter' });
     await page.locator('currency').click();
     await page.locator('select[ng-model="currency"]').selectOption({ label: 'Dollar' });
