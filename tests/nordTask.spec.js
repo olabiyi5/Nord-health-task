@@ -7,8 +7,8 @@ test.describe('Banking Application Tests', () => {
   test('Landing Page Load', async ({ page }) => {
     await page.goto(baseURL);
     await expect(page).toHaveTitle(/XYZ Bank/i); // Check the page title
-    await expect(page.locator('button[ng-click="customer()"]')).toBeVisible(); // Verify customer login button
-    await expect(page.locator('button[ng-click="manager()"]')).toBeVisible(); // Verify manager login button
+    await expect(page.locator('button[ng-click="customer()"]')).toBeVisible(); 
+    await expect(page.locator('button[ng-click="manager()"]')).toBeVisible(); 
   });
 
 
