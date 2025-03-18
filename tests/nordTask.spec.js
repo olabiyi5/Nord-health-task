@@ -81,6 +81,11 @@ test.describe('Banking Application Tests', () => {
     await page.locator('input[ng-model="lName"]').fill('Ade');
     await page.locator('input[ng-model="postCd"]').fill('9999');
     await page.locator('button[type="submit"]').click();
+    // Verify account opening success alert
+    await page.waitForEvent('dialog').then(dialog => {
+      expect(dialog.message()).toContain('Account created successfully with account Number');
+      dialog.dismiss();
+    });
 
 
 
