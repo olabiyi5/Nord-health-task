@@ -6,7 +6,7 @@ test.describe('Banking Application Tests', () => {
   // Test 1: successful loading of main page
   test('Landing Page Load', async ({ page }) => {
     await page.goto(baseURL);
-    await expect(page).toHaveTitle(/XYZ Bank/i); // Check the page title
+    await expect(page).toHaveTitle(/XYZ Bank/); // Check the page title
     await expect(page.locator('button[ng-click="customer()"]')).toBeVisible(); 
     await expect(page.locator('button[ng-click="manager()"]')).toBeVisible(); 
   });
@@ -84,10 +84,6 @@ test.describe('Banking Application Tests', () => {
     // Verify account opening success alert
     page.on('dialog', dialog => console.log(dialog.message()));
     await page.getByText('Account created successfully with account Number');
-
-
-
-
   });
   // Test 6: Bank Manager - Open Account
   test('Bank Manager - Open Account for Customer', async ({ page }) => {
