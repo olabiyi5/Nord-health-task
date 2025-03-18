@@ -82,6 +82,9 @@ test.describe('Banking Application Tests', () => {
     await page.locator('input[ng-model="postCd"]').fill('9999');
     await page.locator('button[type="submit"]').click();
 
+
+
+
   });
   // Test 6: Bank Manager - Open Account
   test('Bank Manager - Open Account for Customer', async ({ page }) => {
@@ -93,13 +96,15 @@ test.describe('Banking Application Tests', () => {
     // Open Account for a customer
     await page.locator('button[ng-click="openAccount()"]').click();
     await page.locator('select[ng-model="custId"]').selectOption({ label: 'Harry Potter' });
-    // await page.locator('currency').click();
     await page.locator('select[ng-model="currency"]').selectOption({ label: 'Dollar' });
     await page.locator('button[type="submit"]').click();
-
+    // Verify new customer alert appears
+    page.on('dialog', dialog => console.log(dialog.message()));
+    await page.getByText('Customer added successfully with customer id');
 
   });
-  });
+
+});
 
 
 
